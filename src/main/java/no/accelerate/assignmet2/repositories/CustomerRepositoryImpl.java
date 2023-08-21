@@ -1,6 +1,9 @@
 package no.accelerate.assignmet2.repositories;
 
+import no.accelerate.assignmet2.dao.models.Customer;
 import org.springframework.beans.factory.annotation.Value;
+
+import java.util.List;
 
 public class CustomerRepositoryImpl {
     private String url;
@@ -15,3 +18,4 @@ public class CustomerRepositoryImpl {
         this.password = password;
     }
 }
+

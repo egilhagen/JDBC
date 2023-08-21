@@ -1,5 +1,6 @@
 package no.accelerate.assignmet2.repositories;
 
-public interface CustomerRepository extends CRUDRepository {
+import no.accelerate.assignmet2.dao.models.Customer;
 
+public interface CustomerRepository extends CRUDRepository {
 }
