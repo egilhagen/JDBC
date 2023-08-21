@@ -1,0 +1,1 @@
+ALTER TABLE assistant ADD COLUMN super_id int REFERENCES superhero;
