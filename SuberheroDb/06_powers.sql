@@ -12,4 +12,5 @@ INSERT INTO superhero_power (super_id, power_id) VALUES
 (2, 4),
 (3, 1),
 (3, 4),
+(4, 2),
 (4, 4);
