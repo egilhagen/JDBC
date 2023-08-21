@@ -14,4 +14,4 @@ CREATE TABLE Power (
 	power_id serial PRIMARY KEY,
 	power_name varchar(50) NOT NULL,
 	power_descript varchar (255)
-)
+);
