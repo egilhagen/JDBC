@@ -5,4 +5,5 @@ import java.util.List;
 public interface CRUDRepository <T> {
     List<T> getAll();
 
+    T getById(int id);
 }
