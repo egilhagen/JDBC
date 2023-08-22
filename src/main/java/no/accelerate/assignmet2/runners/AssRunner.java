@@ -38,13 +38,25 @@ public class AssRunner implements CommandLineRunner {
         */
 
 
+            //Gets a customer by giving id
         System.out.println(customerRepository.getById(2).last_name());
 
+            //Gets a customer by giving last name
         System.out.println(customerRepository.getByName("Smith"));
 
+            //Gets the country with the highest
         System.out.println(customerCountryRepo.getCountryWithHighestCount());
 
+            //Gets the highest spender based on total invoices
         System.out.println(customerSpenderRepo.getHighestSpender());
+
+            //Adds a new customer to database
+        Customer newCustomer = new Customer(0,"Butterbean", "Pieplow","Denmark", "2200","+45 22 33 44 55", "butterbeanpieplow@gmail.com");
+        System.out.println(customerRepository.addCustomer(newCustomer));
+
+            //Deletes the most recently added customer from the database
+       // System.out.println(customerRepository.deleteLatestCustomer());
+
 
 
     }
