@@ -2,6 +2,7 @@ package no.accelerate.assignmet2.runners;
 
 import no.accelerate.assignmet2.dao.AssignmentDAO;
 import no.accelerate.assignmet2.dao.models.Customer;
+import no.accelerate.assignmet2.repositories.CustomerCountryRepo;
 import no.accelerate.assignmet2.repositories.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,10 +13,12 @@ import java.util.List;
 public class AssRunner implements CommandLineRunner {
 
     private final CustomerRepository customerRepository;
+    private final CustomerCountryRepo customerCountryRepo;
     private final AssignmentDAO dao;
 
-    public AssRunner(CustomerRepository customerRepository, AssignmentDAO dao) {
+    public AssRunner(CustomerRepository customerRepository, CustomerCountryRepo customerCountryRepo, AssignmentDAO dao) {
         this.customerRepository = customerRepository;
+        this.customerCountryRepo = customerCountryRepo;
         this.dao = dao;
     }
 
@@ -33,6 +36,8 @@ public class AssRunner implements CommandLineRunner {
         System.out.println(customerRepository.getById(2).last_name());
 
         System.out.println(customerRepository.getByName("Smith"));
+
+        System.out.println(customerCountryRepo.getCountryWithHighestCount());
 
 
 
