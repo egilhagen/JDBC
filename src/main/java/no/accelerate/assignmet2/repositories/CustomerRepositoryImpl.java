@@ -52,7 +52,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     @Override
     public Customer getById(int id) {
         Customer customer = null;
-        String sql = "SELECT * FROM customer WHERE customer_id = ?";
+        String sql = "SELECT customer_id, first_name, last_name, country, postal_code, phone, email FROM customer WHERE customer_id = ?";
         try (Connection conn = DriverManager.getConnection(url, username, password)){
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
