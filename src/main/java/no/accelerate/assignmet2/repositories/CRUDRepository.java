@@ -6,4 +6,6 @@ public interface CRUDRepository <T> {
     List<T> getAll();
 
     T getById(int id);
+
+    List<T> getByName(String name);
 }
