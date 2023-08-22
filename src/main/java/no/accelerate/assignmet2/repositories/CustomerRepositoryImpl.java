@@ -24,6 +24,11 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         this.password = password;
     }
 
+    /**
+     * Retrieves all customers from the database.
+     *
+     * @return List of Customer objects representing the customers.
+     */
     @Override
     public List<Customer> getAll() {
         List<Customer> customers = new ArrayList<>();
@@ -49,6 +54,12 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         return customers;
     }
 
+    /**
+     * Retrieves a customer by their ID from the database.
+     *
+     * @param id The ID of the customer to retrieve.
+     * @return The Customer object representing the retrieved customer, or null if not found.
+     */
     @Override
     public Customer getById(int id) {
         Customer customer = null;
@@ -74,6 +85,12 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         return customer;
     }
 
+    /**
+     * Retrieves customers by their last name using a LIKE query.
+     *
+     * @param name The last name to search for.
+     * @return List of Customer objects matching the last name.
+     */
     public List<Customer> getByName(String name){
         List<Customer> customers = new ArrayList<>();
         String sql = "SELECT customer_id, first_name, last_name, country, postal_code, phone, email FROM customer WHERE last_name LIKE ?";
@@ -99,6 +116,80 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         return customers;
     }
 
+    /**
+     * Adds a new customer to the database.
+     *
+     * @param customer The Customer object representing the customer to be added.
+     * @return The number of rows affected (1 if successful, 0 if not).
+     */
+    @Override
+    public int addCustomer(Customer customer) {
+        String sql = "INSERT INTO customer(first_name, last_name, country, postal_code, phone, email) VALUES (?,?,?,?,?,?)";
+        int result = 0;
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, customer.first_name());
+            statement.setString(2, customer.last_name());
+            statement.setString(3, customer.country());
+            statement.setString(4, customer.postal_code());
+            statement.setString(5, customer.phone());
+            statement.setString(6, customer.email());
+            // Execute statement
+
+            result = statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.print("There be a new customer: ");
+        return result;
+    }
+
+    /**
+     * Deletes the most recently added customer from the database.
+     *
+     * @return The number of rows affected (1 if successful, 0 if not).
+     */
+    @Override
+    public int deleteLatestCustomer() {
+        String selectSql = "SELECT MAX(customer_id) FROM customer";
+        String deleteSql = "DELETE FROM customer WHERE customer_id = ?";
+        int result = 0;
+
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            // Get the ID of the latest added customer
+            PreparedStatement selectStatement = conn.prepareStatement(selectSql);
+            ResultSet resultSet = selectStatement.executeQuery();
+            int latestCustomerId = 0;
+            if (resultSet.next()) {
+                latestCustomerId = resultSet.getInt(1);
+            }
+            selectStatement.close();
+
+            if (latestCustomerId > 0) {
+                // Delete the latest customer
+                PreparedStatement deleteStatement = conn.prepareStatement(deleteSql);
+                deleteStatement.setInt(1, latestCustomerId);
+
+                result = deleteStatement.executeUpdate();
+                System.out.print("There no longer be a customer with the ID " + latestCustomerId);
+            } else {
+                System.out.println("No customers found to delete.");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * Retrieves a limited number of customers with an offset from the database.
+     *
+     * @param limit  The maximum number of customers to retrieve.
+     * @param offset The offset from which to start retrieving customers.
+     * @return List of Customer objects representing the retrieved customers.
+     */
     @Override
     public List<Customer> getLimit(int limit, int offset) {
         List<Customer> customers = new ArrayList<>();
@@ -125,7 +216,6 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         System.out.println("Here be the limit");
         return customers;
     }
-
 
 }
 
