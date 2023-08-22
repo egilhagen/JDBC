@@ -4,6 +4,7 @@ import no.accelerate.assignmet2.dao.AssignmentDAO;
 import no.accelerate.assignmet2.dao.models.Customer;
 import no.accelerate.assignmet2.repositories.CustomerCountryRepo;
 import no.accelerate.assignmet2.repositories.CustomerRepository;
+import no.accelerate.assignmet2.repositories.CustomerSpenderRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,11 +15,13 @@ public class AssRunner implements CommandLineRunner {
 
     private final CustomerRepository customerRepository;
     private final CustomerCountryRepo customerCountryRepo;
+    private final CustomerSpenderRepo customerSpenderRepo;
     private final AssignmentDAO dao;
 
-    public AssRunner(CustomerRepository customerRepository, CustomerCountryRepo customerCountryRepo, AssignmentDAO dao) {
+    public AssRunner(CustomerRepository customerRepository, CustomerCountryRepo customerCountryRepo, CustomerSpenderRepo customerSpenderRepo, AssignmentDAO dao) {
         this.customerRepository = customerRepository;
         this.customerCountryRepo = customerCountryRepo;
+        this.customerSpenderRepo = customerSpenderRepo;
         this.dao = dao;
     }
 
@@ -27,10 +30,12 @@ public class AssRunner implements CommandLineRunner {
         dao.test();
 
 
+        /*
         List<Customer> customerList = customerRepository.getLimit(10,15);
         for (Customer customer : customerList) {
             System.out.println(customer);
         }
+        */
 
 
         System.out.println(customerRepository.getById(2).last_name());
@@ -39,6 +44,7 @@ public class AssRunner implements CommandLineRunner {
 
         System.out.println(customerCountryRepo.getCountryWithHighestCount());
 
+        System.out.println(customerSpenderRepo.getHighestSpender());
 
 
     }
