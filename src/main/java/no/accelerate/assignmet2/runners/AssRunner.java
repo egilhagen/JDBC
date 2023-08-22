@@ -23,10 +23,14 @@ public class AssRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         dao.test();
 
-        List<Customer> customerList = customerRepository.getAll();
+        /*List<Customer> customerList = customerRepository.getAll();
         for (Customer customer : customerList) {
             System.out.println(customer);
         }
+
+         */
+
+        System.out.println(customerRepository.getById(2).last_name());
 
     }
 
