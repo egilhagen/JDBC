@@ -8,4 +8,6 @@ public interface CRUDRepository <T> {
     T getById(int id);
 
     List<T> getByName(String name);
+
+    List<T> getLimit(int i, int j);
 }
