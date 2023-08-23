@@ -5,10 +5,9 @@ import no.accelerate.assignmet2.dao.models.Customer;
 import no.accelerate.assignmet2.repositories.CustomerCountryRepo;
 import no.accelerate.assignmet2.repositories.CustomerRepository;
 import no.accelerate.assignmet2.repositories.CustomerSpenderRepo;
+import no.accelerate.assignmet2.repositories.customerGenre.CustomerGenreRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class AssRunner implements CommandLineRunner {
@@ -16,12 +15,14 @@ public class AssRunner implements CommandLineRunner {
     private final CustomerRepository customerRepository;
     private final CustomerCountryRepo customerCountryRepo;
     private final CustomerSpenderRepo customerSpenderRepo;
+    private final CustomerGenreRepo customerGenreRepo;
     private final AssignmentDAO dao;
 
-    public AssRunner(CustomerRepository customerRepository, CustomerCountryRepo customerCountryRepo, CustomerSpenderRepo customerSpenderRepo, AssignmentDAO dao) {
+    public AssRunner(CustomerRepository customerRepository, CustomerCountryRepo customerCountryRepo, CustomerSpenderRepo customerSpenderRepo, CustomerGenreRepo customerGenreRepo, AssignmentDAO dao) {
         this.customerRepository = customerRepository;
         this.customerCountryRepo = customerCountryRepo;
         this.customerSpenderRepo = customerSpenderRepo;
+        this.customerGenreRepo = customerGenreRepo;
         this.dao = dao;
     }
 
@@ -50,9 +51,10 @@ public class AssRunner implements CommandLineRunner {
             //Gets the highest spender based on total invoices
         System.out.println(customerSpenderRepo.getHighestSpender());
 
+            //Gets most popular genre per customer:
+        customerGenreRepo.getGenreById(12).forEach(System.out::println);
+
             //Adds a new customer to database
-        Customer newCustomer = new Customer(0,"Butterbean", "Pieplow","Denmark", "2200","+45 22 33 44 55", "butterbeanpieplow@gmail.com");
-        //System.out.println(customerRepository.addCustomer(newCustomer));
 
             //Deletes the most recently added customer from the database
        System.out.println(customerRepository.deleteCustomerById(74));
