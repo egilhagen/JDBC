@@ -34,7 +34,7 @@ The setup of the development environment requires the following tools installed:
 ### SQL Scripts
 
 Scripts for the Superheroes database are located in the `SuperheroDb` folder. Each script creates tables, defines relationships, and populate data.
-- `01_tableCreate.sql:`Creates tables.
+- `01_tableCreate.sql:`Creates tables.git
 - `02_relationshipSuperheroAssistant.sql:` Creates foreign key in assistant, connecting it to superhero (one-to-many).
 - `03_relationshipSuperheroPower.sql:`Creates a new table to connect superhero to power (many-to-many).
 - `04_insertSuperheroes.sql:` Inserts new superheroes into the database.
@@ -82,7 +82,7 @@ The following functionalities are required for the Chinook database:
 ### Branching Strategy
 GitHub issues were created for each of the required functionalities listed above, as well as for other tasks such as project structure setup and documentation.  This helped the development team to get a structured overview of the tasks that needed to be completed, and the associated functional requirements.
 A branch was created for each of these issues which means that each development branch shared the descriptive name of the given task.
-This allowed us to safely work on implementing functionality locally while making sure the master branch was operational at al times. 
+This allowed us to safely work on implementing functionality locally while making sure the master branch was operational at all times. 
 
 
 
