@@ -10,12 +10,12 @@
 - [Chinook Database](#chinook-database)
     - [Functionality](#functionality)
     - [Repository Pattern](#repository-pattern)
-- [Branching Strategy](#branching-strategy)
-- [Submission](#submission)
+    - [Branching Strategy](#branching-strategy)
+
 
 ## Project Overview
 
-This assignment is part of the Java Fullstack course at Noroff Accelerate. It involves creating a Spring Boot application using JDBC for data access. It is divided into two main parts: working with the Superheroes database and the Chinook database. The Superheroes database focuses on schema creation, relationships, and data population. The Chinook database requires implementing various functionalities related to customer data.
+This assignment is part of the Java Fullstack course at Noroff Accelerate. It involves creating a Spring Boot application using JDBC for data access. It is divided into two main parts: working with a Superheroes database and a Chinook database. The Superheroes database focuses on schema creation, relationships, and data population. The Chinook database requires implementing various functionalities related to customer data.
 
 ## Setup
 
@@ -58,18 +58,15 @@ The following functionalities are required for the Chinook database:
 
 Implement the repository pattern for data access. Create the required repository interfaces and classes in the `com.example.chinook.repository` package. Utilize the generic CRUD parent interface along with a specialized customer repository.
 
-## Branching Strategy
+### Branching Strategy
 
-Follow a structured branching strategy to manage the project's development. Create branches for specific functionalities or tasks. Use descriptive branch names, and prefix branches with the developer's name. Frequent commits are encouraged, especially after completing each requirement.
+GitHub issues were used to manage the development process.
+GitHub issues were created for each of the required functionalities listed above, as well as for other tasks such as project structure setup and documentation.  This helped the development team to get a structured overview of the tasks that needed to be completed, and the associated functional requirements.
+Each of these created for each of these issues which means that each development branch shares the descriptive name of the given task.
 
-## Submission
 
-Follow these steps for submission:
+a big portion of the development process was done practicing pair programming. Pair programming
 
-1. Create a GitLab repository containing your code and the `superheroes-scripts` folder.
-2. Add me (@NicholasLennox) as a Maintainer.
-3. Submit the link to your GitLab repository.
 
-Remember to include the names of both group members in the submission.
 
-Feel free to expand on the project's functionality and user experience beyond the minimum requirements. Good luck with the project!
+
