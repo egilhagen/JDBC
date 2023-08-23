@@ -8,5 +8,6 @@ public interface CustomerRepository extends CRUDRepository<Customer> {
 
     int addCustomer(Customer customer);
 
-    int deleteLatestCustomer();
+
+    int deleteCustomerById(int customerId);
 }

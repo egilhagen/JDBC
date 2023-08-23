@@ -55,11 +55,9 @@ public class AssRunner implements CommandLineRunner {
         customerGenreRepo.getGenreById(12).forEach(System.out::println);
 
             //Adds a new customer to database
-        // Customer newCustomer = new Customer(0,"Butterbean", "Pieplow","Denmark", "2200","+45 22 33 44 55", "butterbeanpieplow@gmail.com");
-        // System.out.println(customerRepository.addCustomer(newCustomer));
 
             //Deletes the most recently added customer from the database
-       // System.out.println(customerRepository.deleteLatestCustomer());
+       System.out.println(customerRepository.deleteCustomerById(74));
 
 
 
