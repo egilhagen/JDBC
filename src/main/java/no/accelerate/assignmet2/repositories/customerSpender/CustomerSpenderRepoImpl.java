@@ -1,6 +1,5 @@
-package no.accelerate.assignmet2.repositories;
+package no.accelerate.assignmet2.repositories.customerSpender;
 
-import no.accelerate.assignmet2.dao.models.CustomerCountry;
 import no.accelerate.assignmet2.dao.models.CustomerSpender;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -9,7 +8,7 @@ import java.sql.*;
 import java.util.List;
 
 @Repository
-public class CustomerSpenderRepoImpl implements CustomerSpenderRepo{
+public class CustomerSpenderRepoImpl implements CustomerSpenderRepo {
     private final String url;
     private final String username;
     private final String password;
@@ -27,22 +26,6 @@ public class CustomerSpenderRepoImpl implements CustomerSpenderRepo{
     public List<CustomerSpender> getAll() {
         return null;
     }
-
-    @Override
-    public CustomerSpender getById(int id) {
-        return null;
-    }
-
-    @Override
-    public List<CustomerSpender> getByName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<CustomerSpender> getLimit(int i, int j) {
-        return null;
-    }
-
 
     @Override
     public CustomerSpender getHighestSpender() {
@@ -68,7 +51,7 @@ public class CustomerSpenderRepoImpl implements CustomerSpenderRepo{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Highest spender");
+        System.out.println("Here be the highest spender");
         return customerSpender;
     }
 

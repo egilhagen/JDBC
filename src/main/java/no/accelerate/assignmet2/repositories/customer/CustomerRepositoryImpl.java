@@ -1,4 +1,4 @@
-package no.accelerate.assignmet2.repositories;
+package no.accelerate.assignmet2.repositories.customer;
 
 import no.accelerate.assignmet2.dao.models.Customer;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CustomerRepositoryImpl implements CustomerRepository{
+public class CustomerRepositoryImpl implements CustomerRepository {
     private final String url;
     private final String username;
     private final String password;
@@ -82,6 +82,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         } catch (SQLException e) {
             System.out.println(e.getMessage());;
         }
+        System.out.println("Here be the customer");
         return customer;
     }
 
@@ -112,7 +113,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         } catch (SQLException e) {
             System.out.println(e.getMessage());;
         }
-        System.out.println("Here be the customers");
+        System.out.println("Here be the customer(s)");
         return customers;
     }
 
@@ -142,6 +143,37 @@ public class CustomerRepositoryImpl implements CustomerRepository{
             System.out.println(e.getMessage());
         }
         System.out.print("There be a new customer: ");
+        return result;
+    }
+
+    /**
+     * Retrieves a limited number of customers with an offset from the database.
+     *
+     * @param ????  The maximum number of customers to retrieve.
+     * @param ??? The offset from which to start retrieving customers.
+     * @return List of Customer objects representing the retrieved customers.
+     */
+    @Override
+    public int updateCustomer(int id, Customer updatedCustomer) {
+        String sql = "UPDATE customer SET first_name=?, last_name=?, country=?, postal_code=?, phone=?, email=? WHERE customer_id=?";
+        int result = 0;
+
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, updatedCustomer.first_name());
+            statement.setString(2, updatedCustomer.last_name());
+            statement.setString(3, updatedCustomer.country());
+            statement.setString(4, updatedCustomer.postal_code());
+            statement.setString(5, updatedCustomer.phone());
+            statement.setString(6, updatedCustomer.email());
+            statement.setInt(7, id);
+            result = statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Customer with ID " + id + " has been updated.");
         return result;
     }
 
@@ -180,6 +212,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        System.out.println("The customer is now deleted");
         return result;
     }
 
@@ -213,41 +246,9 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         } catch (SQLException e) {
             System.out.println(e.getMessage());;
         }
-        System.out.println("Here be the limit");
+        System.out.println("Here be the limit list");
         return customers;
     }
-
-    /**
-     * Retrieves a limited number of customers with an offset from the database.
-     *
-     * @param ????  The maximum number of customers to retrieve.
-     * @param ??? The offset from which to start retrieving customers.
-     * @return List of Customer objects representing the retrieved customers.
-     */
-    @Override
-    public int updateCustomer(int id, Customer updatedCustomer) {
-        String sql = "UPDATE customer SET first_name=?, last_name=?, country=?, postal_code=?, phone=?, email=? WHERE customer_id=?";
-        int result = 0;
-
-        try (Connection conn = DriverManager.getConnection(url, username, password)) {
-            PreparedStatement statement = conn.prepareStatement(sql);
-
-            statement.setString(1, updatedCustomer.first_name());
-            statement.setString(2, updatedCustomer.last_name());
-            statement.setString(3, updatedCustomer.country());
-            statement.setString(4, updatedCustomer.postal_code());
-            statement.setString(5, updatedCustomer.phone());
-            statement.setString(6, updatedCustomer.email());
-            statement.setInt(7, id);
-            result = statement.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("Customer with ID " + id + " has been updated.");
-        return result;
-    }
-
 }
 
 

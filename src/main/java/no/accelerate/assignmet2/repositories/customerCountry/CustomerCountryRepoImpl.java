@@ -1,6 +1,5 @@
-package no.accelerate.assignmet2.repositories;
+package no.accelerate.assignmet2.repositories.customerCountry;
 
-import no.accelerate.assignmet2.dao.models.Customer;
 import no.accelerate.assignmet2.dao.models.CustomerCountry;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -9,7 +8,7 @@ import java.sql.*;
 import java.util.List;
 
 @Repository
-public class CustomerCountryRepoImpl implements CustomerCountryRepo{
+public class CustomerCountryRepoImpl implements CustomerCountryRepo {
     private final String url;
     private final String username;
     private final String password;
@@ -24,21 +23,6 @@ public class CustomerCountryRepoImpl implements CustomerCountryRepo{
 
     @Override
     public List<CustomerCountry> getAll() {
-        return null;
-    }
-
-    @Override
-    public CustomerCountry getById(int id) {
-        return null;
-    }
-
-    @Override
-    public List<CustomerCountry> getByName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<CustomerCountry> getLimit(int i, int j) {
         return null;
     }
 

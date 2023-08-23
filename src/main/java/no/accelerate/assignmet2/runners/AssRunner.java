@@ -1,10 +1,9 @@
 package no.accelerate.assignmet2.runners;
 
 import no.accelerate.assignmet2.dao.AssignmentDAO;
-import no.accelerate.assignmet2.dao.models.Customer;
-import no.accelerate.assignmet2.repositories.CustomerCountryRepo;
-import no.accelerate.assignmet2.repositories.CustomerRepository;
-import no.accelerate.assignmet2.repositories.CustomerSpenderRepo;
+import no.accelerate.assignmet2.repositories.customerCountry.CustomerCountryRepo;
+import no.accelerate.assignmet2.repositories.customer.CustomerRepository;
+import no.accelerate.assignmet2.repositories.customerSpender.CustomerSpenderRepo;
 import no.accelerate.assignmet2.repositories.customerGenre.CustomerGenreRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -51,10 +50,6 @@ public class AssRunner implements CommandLineRunner {
 
             //Gets most popular genre per customer:
         customerGenreRepo.getGenreById(12).forEach(System.out::println);
-
-
-
-
 
     }
 
