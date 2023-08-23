@@ -22,6 +22,11 @@ public class CustomerCountryRepoImpl implements CustomerCountryRepo {
         this.password = password;
     }
 
+    /**
+     * Retrieves a list of CustomerCountry objects representing countries and their corresponding customer counts.
+     *
+     * @return A List of CustomerCountry objects representing countries and their customer counts.
+     */
     @Override
     public List<CustomerCountry> getAll() {
         List<CustomerCountry> customerCountry = new ArrayList<>();
@@ -42,6 +47,11 @@ public class CustomerCountryRepoImpl implements CustomerCountryRepo {
         return customerCountry;
     }
 
+    /**
+     * This method retrieves the country with the highest customer count from the database.
+     *
+     * @return A CustomerCountry object representing the country with the highest customer count, or null if no data is found.
+     */
     public CustomerCountry getCountryWithHighestCount() {
         CustomerCountry customerCountry = null;
         String sql = "SELECT country, COUNT(*) AS country_count FROM customer GROUP BY country ORDER BY country_count DESC LIMIT 1";
