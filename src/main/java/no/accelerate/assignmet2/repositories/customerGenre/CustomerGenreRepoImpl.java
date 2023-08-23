@@ -101,20 +101,4 @@ public class CustomerGenreRepoImpl implements CustomerGenreRepo {
         System.out.println("Here be the customers fav genre");
         return customerGenres;
     }
-
-
-    @Override
-    public CustomerGenre getById(int id) {
-        return null;
-    }
-
-    @Override
-    public List<CustomerGenre> getByName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<CustomerGenre> getLimit(int i, int j) {
-        return null;
-    }
 }

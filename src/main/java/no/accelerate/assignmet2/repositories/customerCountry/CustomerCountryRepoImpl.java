@@ -1,15 +1,15 @@
-package no.accelerate.assignmet2.repositories;
+package no.accelerate.assignmet2.repositories.customerCountry;
 
-import no.accelerate.assignmet2.dao.models.Customer;
 import no.accelerate.assignmet2.dao.models.CustomerCountry;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CustomerCountryRepoImpl implements CustomerCountryRepo{
+public class CustomerCountryRepoImpl implements CustomerCountryRepo {
     private final String url;
     private final String username;
     private final String password;
@@ -24,22 +24,22 @@ public class CustomerCountryRepoImpl implements CustomerCountryRepo{
 
     @Override
     public List<CustomerCountry> getAll() {
-        return null;
-    }
-
-    @Override
-    public CustomerCountry getById(int id) {
-        return null;
-    }
-
-    @Override
-    public List<CustomerCountry> getByName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<CustomerCountry> getLimit(int i, int j) {
-        return null;
+        List<CustomerCountry> customerCountry = new ArrayList<>();
+        String sql = "SELECT country, COUNT(*) AS country_count FROM customer GROUP BY country ORDER BY country ASC ;";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                customerCountry.add(new CustomerCountry (
+                        result.getString("country"),
+                        result.getInt("country_count")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Country List");
+        return customerCountry;
     }
 
     public CustomerCountry getCountryWithHighestCount() {
