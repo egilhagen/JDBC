@@ -1,22 +1,8 @@
 # Assignment 2 - Data Access with JDBC 
 
 ### Authors 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <div align="center" style="color: #d8d7d6;">
-    <a href="https://github.com/vildekure">
-      <img src="https://ca.slack-edge.com/T05AYAELMFV-U05M988QPMW-0b4bbf7a3958-512" alt="Vilde Kure" width="100" height="100" style="border-radius: 50%;">
-    </a>
-    <br>
-    Vilde Kure
-  </div>
-  <div align="center" style="color: #d8d7d6;">
-    <a href="https://github.com/egilhagen">
-      <img src="https://media.licdn.com/dms/image/D4D03AQGK973sBlwNUA/profile-displayphoto-shrink_800_800/0/1692127770924?e=1698278400&v=beta&t=zR_SxHZqgq7IDqPSS9O8gtZpG64jPEPif37dPPfspe8" alt="Egil Hagen" width="100" height="100" style="border-radius: 50%;">
-    </a>
-    <br>
-    Egil Hagen
-  </div>
-</div>
+- [Vilde Kure](https://github.com/vildekure)
+- [Egil Hagen](https://github.com/egilhagen)
 
 ## Table of Contents
 
