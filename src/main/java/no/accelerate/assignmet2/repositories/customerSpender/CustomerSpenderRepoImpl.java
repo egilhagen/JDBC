@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -24,7 +25,30 @@ public class CustomerSpenderRepoImpl implements CustomerSpenderRepo {
 
     @Override
     public List<CustomerSpender> getAll() {
-        return null;
+        List<CustomerSpender> customerSpenders = new ArrayList<>();
+        String sql =
+                "SELECT c.customer_id, c.first_name, c.last_name, " +
+                        "MAX(i.total) AS highest_total " +
+                        "FROM customer AS c " +
+                        "JOIN invoice AS i ON c.customer_id = i.customer_id " +
+                        "GROUP BY c.customer_id, c.first_name, c.last_name " +
+                        "ORDER BY c.customer_id";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                customerSpenders.add(new CustomerSpender (
+                        result.getInt("customer_id"),
+                        result.getString("first_name"),
+                        result.getString("last_name"),
+                        result.getDouble("highest_total")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Country List");
+        return customerSpenders;
     }
 
     @Override

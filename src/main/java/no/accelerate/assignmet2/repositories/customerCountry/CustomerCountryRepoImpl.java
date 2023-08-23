@@ -25,7 +25,7 @@ public class CustomerCountryRepoImpl implements CustomerCountryRepo {
     @Override
     public List<CustomerCountry> getAll() {
         List<CustomerCountry> customerCountry = new ArrayList<>();
-        String sql = "SELECT country, COUNT(*) AS country_count FROM customer GROUP BY country;";
+        String sql = "SELECT country, COUNT(*) AS country_count FROM customer GROUP BY country ORDER BY country ASC ;";
         try (Connection conn = DriverManager.getConnection(url, username, password)) {
             PreparedStatement statement = conn.prepareStatement(sql);
             ResultSet result = statement.executeQuery();

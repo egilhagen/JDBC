@@ -51,6 +51,8 @@ public class AssRunner implements CommandLineRunner {
             //Gets most popular genre per customer:
         customerGenreRepo.getGenreById(12).forEach(System.out::println);
 
+        customerCountryRepo.getAll().forEach(System.out::println);
+
     }
 
 }
