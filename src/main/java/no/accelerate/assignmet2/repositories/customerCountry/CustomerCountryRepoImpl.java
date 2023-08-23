@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -23,7 +24,22 @@ public class CustomerCountryRepoImpl implements CustomerCountryRepo {
 
     @Override
     public List<CustomerCountry> getAll() {
-        return null;
+        List<CustomerCountry> customerCountry = new ArrayList<>();
+        String sql = "SELECT country, COUNT(*) AS country_count FROM customer GROUP BY country;";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                customerCountry.add(new CustomerCountry (
+                        result.getString("country"),
+                        result.getInt("country_count")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Country List");
+        return customerCountry;
     }
 
     public CustomerCountry getCountryWithHighestCount() {
