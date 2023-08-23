@@ -147,18 +147,19 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     /**
-     * Deletes the most recently added customer from the database.
+     * Deletes a customer by their ID from the database.
      *
+     * @param id The ID of the customer to delete.
      * @return The number of rows affected (1 if successful, 0 if not).
      */
     @Override
-    public int deleteLatestCustomer() {
+    public int deleteCustomerById(int id) {
         String selectSql = "SELECT MAX(customer_id) FROM customer";
         String deleteSql = "DELETE FROM customer WHERE customer_id = ?";
         int result = 0;
 
         try (Connection conn = DriverManager.getConnection(url, username, password)) {
-            // Get the ID of the latest added customer
+                //Find the highest customer_id in the database
             PreparedStatement selectStatement = conn.prepareStatement(selectSql);
             ResultSet resultSet = selectStatement.executeQuery();
             int latestCustomerId = 0;
@@ -167,13 +168,13 @@ public class CustomerRepositoryImpl implements CustomerRepository{
             }
             selectStatement.close();
 
+                // Checks if there are any customers with id in the database
+                // Removes a customer based on the given id
             if (latestCustomerId > 0) {
-                // Delete the latest customer
                 PreparedStatement deleteStatement = conn.prepareStatement(deleteSql);
-                deleteStatement.setInt(1, latestCustomerId);
-
+                deleteStatement.setInt(1, id);
                 result = deleteStatement.executeUpdate();
-                System.out.print("There no longer be a customer with the ID " + latestCustomerId);
+                System.out.print("There no longer be a customer with the ID " + id + ": ");
             } else {
                 System.out.println("No customers found to delete.");
             }
