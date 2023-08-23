@@ -135,7 +135,6 @@ public class CustomerRepositoryImpl implements CustomerRepository{
             statement.setString(4, customer.postal_code());
             statement.setString(5, customer.phone());
             statement.setString(6, customer.email());
-            // Execute statement
 
             result = statement.executeUpdate();
 
@@ -216,6 +215,37 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         }
         System.out.println("Here be the limit");
         return customers;
+    }
+
+    /**
+     * Retrieves a limited number of customers with an offset from the database.
+     *
+     * @param ????  The maximum number of customers to retrieve.
+     * @param ??? The offset from which to start retrieving customers.
+     * @return List of Customer objects representing the retrieved customers.
+     */
+    @Override
+    public int updateCustomer(int id, Customer updatedCustomer) {
+        String sql = "UPDATE customer SET first_name=?, last_name=?, country=?, postal_code=?, phone=?, email=? WHERE customer_id=?";
+        int result = 0;
+
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, updatedCustomer.first_name());
+            statement.setString(2, updatedCustomer.last_name());
+            statement.setString(3, updatedCustomer.country());
+            statement.setString(4, updatedCustomer.postal_code());
+            statement.setString(5, updatedCustomer.phone());
+            statement.setString(6, updatedCustomer.email());
+            statement.setInt(7, id);
+            result = statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Customer with ID " + id + " has been updated.");
+        return result;
     }
 
 }

@@ -52,10 +52,15 @@ public class AssRunner implements CommandLineRunner {
 
             //Adds a new customer to database
         Customer newCustomer = new Customer(0,"Butterbean", "Pieplow","Denmark", "2200","+45 22 33 44 55", "butterbeanpieplow@gmail.com");
-        //System.out.println(customerRepository.addCustomer(newCustomer));
+       // System.out.println(customerRepository.addCustomer(newCustomer));
+
+        Customer updateCustomer = new Customer(0,"Butterbeef", "Cowplow","Denmark", "2200","+45 22 33 44 55", "butterbeanpieplow@gmail.com");
+        System.out.println(customerRepository.updateCustomer(75, updateCustomer));
 
             //Deletes the most recently added customer from the database
-       System.out.println(customerRepository.deleteCustomerById(74));
+       //System.out.println(customerRepository.deleteCustomerById(74));
+
+
 
 
 
