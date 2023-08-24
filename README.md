@@ -80,6 +80,9 @@ The following functionalities were required for the Chinook database:
 8. Identify the highest-spending customer.
 9. Determine the most popular genre for a given customer.
 
+#### Additional functionality 
+- Functionality for deleting customers in the database by ID was implemented to help remove customers added during testing.
+
 ### Branching Strategy
 GitHub issues were created for each of the required functionalities listed above, as well as for other tasks such as project structure setup and documentation. 
 This helped the development team to get a structured overview of the tasks that needed to be completed, and the associated functional requirements.

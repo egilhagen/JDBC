@@ -54,26 +54,27 @@ public class AssRunner implements CommandLineRunner {
         customerRepository.getLimit(10,10).forEach(System.out::println);
         /*
         =================================
-        REQUIREMENT 5 - Add a new customer to database:
+        REQUIREMENT 5 - Add a new customer to database
         =================================
         */
         Customer customer = new Customer(0,"Butterbin","Pipelock","Someplace","1222", "420420420","coolman@cooland");
         System.out.println(customerRepository.addCustomer(customer));
         /*
         =================================
-        REQUIREMENT 6
+        REQUIREMENT 6 - Updates the customer with the given ID
         =================================
          */
-        // Update here
+        Customer updatedCustomer = new Customer(0,"Butterbasket","Babyface","Everywhere","1222", "420420420","coolman@cooland");
+        System.out.println(customerRepository.updateCustomer(77, updatedCustomer));
         /*
         =================================
-        REQUIREMENT 7 - Gets the country with the most customers:
+        REQUIREMENT 7 - Gets the country with the most customers
         =================================
          */
         System.out.println(customerCountryRepo.getCountryWithHighestCount());
         /*
         =================================
-        REQUIREMENT 8 - Customer who is the highest spender.
+        REQUIREMENT 8 - Customer who is the highest spender
         =================================
         */
         System.out.println(customerSpenderRepo.getHighestSpender());
