@@ -23,6 +23,11 @@ public class CustomerSpenderRepoImpl implements CustomerSpenderRepo {
         this.password = password;
     }
 
+    /**
+     * This method retrieves a customerSpender List along with their total purchase amounts.
+     *
+     * @return A List of CustomerSpender objects representing customers and their total purchase amounts.
+     */
     @Override
     public List<CustomerSpender> getAll() {
         List<CustomerSpender> customerSpenders = new ArrayList<>();
@@ -51,6 +56,11 @@ public class CustomerSpenderRepoImpl implements CustomerSpenderRepo {
         return customerSpenders;
     }
 
+    /**
+     * This method retrieves the customer with the highest total purchase amount.
+     *
+     * @return A CustomerSpender object representing customer and their total purchase amounts.
+     */
     @Override
     public CustomerSpender getHighestSpender() {
         CustomerSpender customerSpender = null;

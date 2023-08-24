@@ -25,6 +25,11 @@ public class CustomerGenreRepoImpl implements CustomerGenreRepo {
         this.password = password;
     }
 
+    /**
+     * Retrieves a list of CustomerGenre objects representing customers' favorite genres and associated track counts.
+     *
+     * @return A List of CustomerGenre objects representing customers' favorite genres and associated track counts.
+     */
     @Override
     public List<CustomerGenre> getAll() {
         List<CustomerGenre> customerGenres = new ArrayList<>();
@@ -63,6 +68,12 @@ public class CustomerGenreRepoImpl implements CustomerGenreRepo {
         return customerGenres;
     }
 
+    /**
+     * Retrieves a CustomerGenre object representing customers' favorite genres and associated track counts.
+     *
+     * @param id the ID of the customer you want to retrieve the information about.
+     * @return A CustomerGenre object representing customers' favorite genres and associated track counts.
+     */
     @Override
     public List<CustomerGenre> getGenreById(int id) {
         List<CustomerGenre> customerGenres = new ArrayList<>();
