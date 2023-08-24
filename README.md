@@ -54,7 +54,7 @@ Work on the Chinook database involves interacting with the provided database to 
 
 A repository pattern for data access has been implemented in the `no.accelerate.assignment2.repository` package. 
 We utilize the generic CRUD parent interface along with specialized repositories for specific customer-related queries. 
-These repositories extend the CRUDRepository and provide methods for querying customers based on various criteria.
+These repositories provide methods for querying customers based on various criteria.
 
 `CustomerGenreRepository:` Provides methods for querying customers based on their preferred music genre.
 
