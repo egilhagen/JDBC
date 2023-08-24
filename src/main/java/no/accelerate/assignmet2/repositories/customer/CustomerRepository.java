@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CustomerRepository extends CRUDRepository<Customer> {
     Customer getById(int id);
-    List<Customer> getByName(String name);
+    List<Customer> getByLastName(String name);
     int addCustomer(Customer customer);
     int updateCustomer(int id, Customer updatedCustomer);
     int deleteCustomerById(int customerId);

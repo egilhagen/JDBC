@@ -1,6 +1,7 @@
 package no.accelerate.assignmet2.runners;
 
 import no.accelerate.assignmet2.dao.AssignmentDAO;
+import no.accelerate.assignmet2.dao.models.Customer;
 import no.accelerate.assignmet2.repositories.customerCountry.CustomerCountryRepo;
 import no.accelerate.assignmet2.repositories.customer.CustomerRepository;
 import no.accelerate.assignmet2.repositories.customerSpender.CustomerSpenderRepo;
@@ -28,31 +29,63 @@ public class AssRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         dao.test();
-
-            //Gets a customer based on ID:
+        /*
+        REQUIREMENT 1 - Get All
+        =================================
+        */
+        customerRepository.getAll().forEach(System.out::println);
+        /*
+        =================================
+        REQUIREMENT 2 - Gets a customer based on ID
+        =================================
+         */
         System.out.println(customerRepository.getById(2).last_name());
-
-            //Gets a customer by giving last name:
-        System.out.println(customerRepository.getByName("Smith"));
-
-            //Adds a new customer to database:
-        // Customer customer = new Customer(0,"Butterbin","Pipelock","Someplace","1222", "420420420","coolman@cooland");
-        // System.out.println(customerRepository.addCustomer(customer));
-
-            //Deletes a customer based on ID:
-        // System.out.println(customerRepository.deleteCustomerById(74));
-
-            //Gets the country with the highest:
+        /*
+        =================================
+        REQUIREMENT 3 - Gets a customer by giving last name
+        =================================
+         */
+        System.out.println(customerRepository.getByLastName("Smith"));
+        /*
+        =================================
+        REQUIREMENT 4 - Get a page of customers
+        =================================
+         */
+        customerRepository.getLimit(10,10).forEach(System.out::println);
+        /*
+        =================================
+        REQUIREMENT 5 - Add a new customer to database:
+        =================================
+        */
+        Customer customer = new Customer(0,"Butterbin","Pipelock","Someplace","1222", "420420420","coolman@cooland");
+        System.out.println(customerRepository.addCustomer(customer));
+        /*
+        =================================
+        REQUIREMENT 6
+        =================================
+         */
+        // Update here
+        /*
+        =================================
+        REQUIREMENT 7 - Gets the country with the most customers:
+        =================================
+         */
         System.out.println(customerCountryRepo.getCountryWithHighestCount());
-
-            //Gets the highest spender based on total invoices:
+        /*
+        =================================
+        REQUIREMENT 8 - Customer who is the highest spender.
+        =================================
+        */
         System.out.println(customerSpenderRepo.getHighestSpender());
-
-            //Gets most popular genre per customer:
+        /*
+        =================================
+        REQUIREMENT 9 - For a given customer, their most popular genre
+        =================================
+        */
         customerGenreRepo.getGenreById(12).forEach(System.out::println);
-
-            //Gets all countries and their corresponding customer counts:
-        customerCountryRepo.getAll().forEach(System.out::println);
+        /*
+        =================================
+        */
 
     }
 

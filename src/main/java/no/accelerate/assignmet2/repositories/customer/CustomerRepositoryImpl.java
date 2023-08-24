@@ -92,7 +92,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
      * @param name The last name to search for.
      * @return List of Customer objects matching the last name.
      */
-    public List<Customer> getByName(String name){
+    public List<Customer> getByLastName(String name){
         List<Customer> customers = new ArrayList<>();
         String sql = "SELECT customer_id, first_name, last_name, country, postal_code, phone, email FROM customer WHERE last_name LIKE ?";
         try (Connection conn = DriverManager.getConnection(url, username, password)){
