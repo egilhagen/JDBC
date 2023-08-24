@@ -20,7 +20,7 @@
 
 This assignment is part of the Java Fullstack course at Noroff Accelerate. It involves creating a Spring Boot application using JDBC for data access. It is divided into two main parts: working with a Superheroes database and a Chinook database. The Superheroes database focuses on schema creation, relationships, and data population. The Chinook database requires implementing various functionalities related to customer data.
 
-## Setup
+## Technological requirements
 
 The setup of the development environment requires the following tools installed:
 
@@ -34,7 +34,7 @@ The setup of the development environment requires the following tools installed:
 ### SQL Scripts
 
 Scripts for the Superheroes database are located in the `SuperheroDb` folder. Each script creates tables, defines relationships, and populate data.
-- `01_tableCreate.sql:`Creates tables.git
+- `01_tableCreate.sql:`Creates tables.
 - `02_relationshipSuperheroAssistant.sql:` Creates foreign key in assistant, connecting it to superhero (one-to-many).
 - `03_relationshipSuperheroPower.sql:`Creates a new table to connect superhero to power (many-to-many).
 - `04_insertSuperheroes.sql:` Inserts new superheroes into the database.
@@ -54,7 +54,7 @@ Work on the Chinook database involves interacting with the provided database to 
 
 A repository pattern for data access has been implemented in the `no.accelerate.assignment2.repository` package. 
 We utilize the generic CRUD parent interface along with specialized repositories for specific customer-related queries. 
-These repositories provide methods for querying customers based on various criteria.
+These repositories extend the CRUDRepository and provide methods for querying customers based on various criteria.
 
 `CustomerGenreRepository:` Provides methods for querying customers based on their preferred music genre.
 
@@ -62,12 +62,13 @@ These repositories provide methods for querying customers based on various crite
 
 `CustomerSpenderRepository:` Provides methods for querying customers based on their spending behavior.
 
-`CustomerRepositoryImpl:` A generic implementation of the CustomerRepository interface that includes basic CRUD operations. It inherits from CRUDRepositoryImpl and can be extended with additional methods.
-By using the repository pattern, you can separate the data access logic from the rest of your application's business logic. This makes your code more maintainable and easier to test. It also allows you to encapsulate complex database operations behind simple and consistent methods.
+`CustomerRepositoryImpl:` A generic implementation of the CustomerRepository interface that includes basic CRUD operations.
 
 
-### Functionality
-The following functionalities are required for the Chinook database:
+
+
+### Functional requirements
+The following functionalities were required for the Chinook database:
 
 1. Read all customers.
 2. Read a specific customer by ID.
@@ -80,8 +81,9 @@ The following functionalities are required for the Chinook database:
 9. Determine the most popular genre for a given customer.
 
 ### Branching Strategy
-GitHub issues were created for each of the required functionalities listed above, as well as for other tasks such as project structure setup and documentation.  This helped the development team to get a structured overview of the tasks that needed to be completed, and the associated functional requirements.
-A branch was created for each of these issues which means that each development branch shared the descriptive name of the given task.
+GitHub issues were created for each of the required functionalities listed above, as well as for other tasks such as project structure setup and documentation. 
+This helped the development team to get a structured overview of the tasks that needed to be completed, and the associated functional requirements.
+A branch was created for each of these issues which means that each development branch shared the descriptive name and number of the given task.
 This allowed us to safely work on implementing functionality locally while making sure the master branch was operational at all times. 
 
 
