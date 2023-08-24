@@ -29,28 +29,29 @@ public class AssRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         dao.test();
 
-            //Gets a customer by giving id
+            //Gets a customer based on ID:
         System.out.println(customerRepository.getById(2).last_name());
 
-            //Gets a customer by giving last name
+            //Gets a customer by giving last name:
         System.out.println(customerRepository.getByName("Smith"));
 
-            //Adds a new customer to database
+            //Adds a new customer to database:
         // Customer customer = new Customer(0,"Butterbin","Pipelock","Someplace","1222", "420420420","coolman@cooland");
         // System.out.println(customerRepository.addCustomer(customer));
 
-            //Deletes the most recently added customer from the database
+            //Deletes a customer based on ID:
         // System.out.println(customerRepository.deleteCustomerById(74));
 
-            //Gets the country with the highest
+            //Gets the country with the highest:
         System.out.println(customerCountryRepo.getCountryWithHighestCount());
 
-            //Gets the highest spender based on total invoices
+            //Gets the highest spender based on total invoices:
         System.out.println(customerSpenderRepo.getHighestSpender());
 
             //Gets most popular genre per customer:
         customerGenreRepo.getGenreById(12).forEach(System.out::println);
 
+            //Gets all countries and their corresponding customer counts:
         customerCountryRepo.getAll().forEach(System.out::println);
 
     }
